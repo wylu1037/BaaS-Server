@@ -1,0 +1,11 @@
+# 先与application.yml文件读取
+spring:
+  application:
+    name: baasUserService
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.1.79:8848
+      config:
+        file-extension: yaml
