@@ -22,8 +22,10 @@ public class CloudMachineInfoService implements ICloudMachineInfoService {
     public CloudMachineInfo getById(Long id) {
         // 构建查询条件
         LambdaQueryWrapper<CloudMachineInfo> wrapper = Wrappers.<CloudMachineInfo>lambdaQuery()
-            .select(CloudMachineInfo::getInstanceName, CloudMachineInfo::getInstanceName)
-            .eq(CloudMachineInfo::getId, 1)
+            .select(CloudMachineInfo::getId,CloudMachineInfo::getAccountId,CloudMachineInfo::getServiceProvider,
+                CloudMachineInfo::getImageId, CloudMachineInfo::getInstanceType, CloudMachineInfo::getInstanceName,
+                CloudMachineInfo::getInstanceName)
+            .eq(CloudMachineInfo::getId, id)
             .last("limit 1");
         return cloudMachineInfoMapper.selectOne(wrapper);
     }
