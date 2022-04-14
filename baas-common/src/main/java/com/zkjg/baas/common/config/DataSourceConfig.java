@@ -1,4 +1,4 @@
-package com.zkjg.baas.baas.common.config;
+package com.zkjg.baas.common.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import javax.sql.DataSource;

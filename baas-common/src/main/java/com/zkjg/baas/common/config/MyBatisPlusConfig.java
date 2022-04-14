@@ -1,4 +1,4 @@
-package com.zkjg.baas.baas.common.config;
+package com.zkjg.baas.common.config;
 
 import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
