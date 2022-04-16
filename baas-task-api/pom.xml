@@ -20,6 +20,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.zkjg</groupId>
+            <artifactId>baas-base</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>

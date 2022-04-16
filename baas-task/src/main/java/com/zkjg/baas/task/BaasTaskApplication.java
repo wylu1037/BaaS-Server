@@ -6,12 +6,14 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author wylu
  * @date 2022/4/15 下午 12:40
  */
 @EnableNacosConfig
+@EnableScheduling
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = "com.zkjg.baas.task.service")
 @MapperScan("com.zkjg.baas.task.mapper")

@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/branch/baseline/updateSql.sql
+
+  - changeSet:
+      id: 202204151940025
+      author: wylu
+      comment: 创建quartz表格
+      changes:
+        - tagDatabase:
+            - tag: 202204151940025
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/branch/baseline/table/createQuartzTable.sql
+        - rollback:
+            - dropTable:
+                tableName: QRTZ_FIRED_TRIGGERS
+            - dropTable:
+                tableName: QRTZ_PAUSED_TRIGGER_GRPS
+            - dropTable:
+                tableName: QRTZ_SCHEDULER_STATE
+            - dropTable:
+                tableName: QRTZ_LOCKS
+            - dropTable:
+                tableName: QRTZ_SIMPLE_TRIGGERS
+            - dropTable:
+                tableName: QRTZ_SIMPROP_TRIGGERS
+            - dropTable:
+                tableName: QRTZ_CRON_TRIGGERS
+            - dropTable:
+                tableName: QRTZ_BLOB_TRIGGERS
+            - dropTable:
+                tableName: QRTZ_TRIGGERS
+            - dropTable:
+                tableName: QRTZ_JOB_DETAILS
+            - dropTable:
+                tableName: QRTZ_CALENDARS
+
+  - changeSet:
+      id: 202204152232011
+      author: wylu
+      comment: 创建job_entity表
+      changes:
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/branch/baseline/table/createJobEntityTable.sql
+        - rollback:
+            - dropTable:
+                tableName: job_entity
