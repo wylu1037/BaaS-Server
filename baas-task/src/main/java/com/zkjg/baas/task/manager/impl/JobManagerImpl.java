@@ -98,8 +98,7 @@ public class JobManagerImpl implements JobManager {
     @Override
     public void shutdownAllJobs() throws SchedulerException {
         synchronized (log) {
-            Scheduler scheduler;
-            scheduler = schedulerFactoryBean.getScheduler();
+            Scheduler scheduler = schedulerFactoryBean.getScheduler();
             Set<JobKey> set = scheduler.getJobKeys(GroupMatcher.anyGroup());
             scheduler.pauseJobs(GroupMatcher.anyGroup());
             for (JobKey jobKey : set) {

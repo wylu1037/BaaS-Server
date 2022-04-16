@@ -13,18 +13,62 @@ import org.springframework.validation.annotation.Validated;
  */
 public interface JobManager {
 
+    /**
+     * 重启所有任务
+     *
+     * @throws SchedulerException
+     */
     void restartAllJobs() throws SchedulerException;
 
+    /**
+     * 关闭所有任务
+     *
+     * @throws SchedulerException
+     */
     void shutdownAllJobs() throws SchedulerException;
 
+    /**
+     * 刷新任务
+     *
+     * @param id
+     * @return
+     * @throws SchedulerException
+     */
     String refreshJob(@NotNull Long id) throws SchedulerException;
 
+    /**
+     * 修改任务
+     *
+     * @param reqParams
+     * @return
+     */
     String modifyJob(@Validated ModifyJobReq reqParams);
 
+    /**
+     * 暂停任务
+     *
+     * @param jobName
+     * @param jobGroup
+     * @throws SchedulerException
+     */
     void pauseJob(@NotNull String jobName, @NotNull String jobGroup) throws SchedulerException;
 
+    /**
+     * 恢复任务
+     *
+     * @param jobName
+     * @param jobGroup
+     * @throws SchedulerException
+     */
     void resumeJob(@NotNull String jobName, @NotNull String jobGroup) throws SchedulerException;
 
+    /**
+     * 删除任务
+     *
+     * @param jobName
+     * @param jobGroup
+     * @throws SchedulerException
+     */
     void deleteJob(@NotNull String jobName, @NotNull String jobGroup) throws SchedulerException;
 
     /**

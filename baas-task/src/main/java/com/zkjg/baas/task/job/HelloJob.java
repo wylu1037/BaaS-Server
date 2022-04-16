@@ -1,7 +1,10 @@
 package com.zkjg.baas.task.job;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.zkjg.baas.common.util.GsonUtils;
 import com.zkjg.baas.task.constant.GroupEnum;
+import com.zkjg.baas.user.api.ICloudMachineInfoService;
+import com.zkjg.baas.user.bean.CloudMachineInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobDataMap;
@@ -19,6 +22,9 @@ import org.springframework.stereotype.Component;
 @DisallowConcurrentExecution //不允许并发执行
 public class HelloJob implements BaseJob {
 
+    @Reference
+    private ICloudMachineInfoService iCloudMachineInfoService;
+
     @Override
     public String acceptGroup() {
         return GroupEnum.HELLO.getName();
@@ -30,5 +36,7 @@ public class HelloJob implements BaseJob {
         JobDataMap jobDataMap = context.getJobDetail().getJobDataMap();
         // 调用接口
         log.info("[HelloJob] execute() called with: jobDataMap = {}", GsonUtils.toJson(jobDataMap));
+        CloudMachineInfo cloudMachineInfo = iCloudMachineInfoService.getById(5L);
+        System.out.println(">>>>>>" + GsonUtils.toJson(cloudMachineInfo));
     }
 }

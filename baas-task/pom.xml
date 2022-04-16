@@ -30,6 +30,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.zkjg</groupId>
+            <artifactId>baas-user-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- nacos：config center -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
