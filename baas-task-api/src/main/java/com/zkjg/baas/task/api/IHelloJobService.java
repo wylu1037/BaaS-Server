@@ -16,5 +16,5 @@ public interface IHelloJobService {
      * @param content 内容
      * @return
      */
-    BaseResult<String> sayHelloJob(String language, String author, String content);
+    BaseResult<String> registerSayHelloJob(String language, String author, String content);
 }

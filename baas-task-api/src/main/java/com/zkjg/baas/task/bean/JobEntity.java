@@ -1,7 +1,6 @@
 package com.zkjg.baas.task.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -31,6 +30,8 @@ public class JobEntity implements Serializable {
 
     private String groupName;
 
+    private Long operatorId;
+
     private Long chainId;
 
     private Long nodeId;
@@ -42,11 +43,9 @@ public class JobEntity implements Serializable {
     private Integer enableFlag;
 
     private String remark;
-
-    @TableField(exist = false)
+    
     private Date createTime;
 
-    @TableField(exist = false)
     private Date updateTime;
 
     private Integer deleteFlag;

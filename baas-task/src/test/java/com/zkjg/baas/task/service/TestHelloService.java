@@ -1,6 +1,8 @@
 package com.zkjg.baas.task.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.zkjg.baas.base.bean.BaseResult;
+import com.zkjg.baas.common.util.GsonUtils;
 import com.zkjg.baas.task.api.IHelloJobService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,8 @@ public class TestHelloService {
 
     @Test
     public void testSayHello() {
-        iHelloJobService.sayHelloJob("java", "James Gosling", "java是世界上最好的语言！");
+        BaseResult<String> baseResult = iHelloJobService.registerSayHelloJob("java", "James Gosling",
+            "java是世界上最好的语言！");
+        System.out.println(GsonUtils.toJson(baseResult));
     }
 }

@@ -1,11 +1,11 @@
 package com.zkjg.baas.task.job;
 
 import com.zkjg.baas.common.util.GsonUtils;
+import com.zkjg.baas.task.constant.GroupEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,11 +21,11 @@ public class HelloJob implements BaseJob {
 
     @Override
     public String acceptGroup() {
-        return "Test";
+        return GroupEnum.HELLO.getName();
     }
 
     @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException {
+    public void execute(JobExecutionContext context) {
         // 获取JobDataMap context.getMergedJobDataMap();
         JobDataMap jobDataMap = context.getJobDetail().getJobDataMap();
         // 调用接口

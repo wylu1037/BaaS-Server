@@ -9,6 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2022/4/15 下午 10:38
  */
 @Mapper
-public interface JobMapper extends BaseMapper<JobEntity> {
+public interface JobEntityMapper extends BaseMapper<JobEntity> {
 
 }

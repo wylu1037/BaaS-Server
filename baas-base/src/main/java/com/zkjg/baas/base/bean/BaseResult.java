@@ -22,6 +22,10 @@ public class BaseResult<T> implements Serializable {
         this.data = data;
     }
 
+    public BaseResult() {
+        this.code = -100;
+    }
+
     public BaseResult(Integer code) {
         this.code = code;
     }
