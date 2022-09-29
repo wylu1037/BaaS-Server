@@ -1,0 +1,13 @@
+dependencies {
+    implementation project(':baas-common')
+    implementation project(':baas-user-api')
+    implementation 'com.alibaba:dubbo:2.6.7'
+    implementation 'com.alibaba.spring:spring-context-support:1.0.10'
+    implementation 'com.alibaba.nacos:nacos-spring-context:1.1.0'
+    implementation 'com.alibaba:dubbo-registry-nacos:2.6.7'
+    implementation 'io.netty:netty-all:4.1.31.Final'
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE'
+}
+
+description = 'baas-user'

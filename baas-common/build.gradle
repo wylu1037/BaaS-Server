@@ -1,0 +1,12 @@
+dependencies {
+    implementation project(':baas-base')
+    implementation 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'mysql:mysql-connector-java'
+    implementation 'com.alibaba:druid-spring-boot-starter'
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
+    implementation 'com.google.code.gson:gson:'
+}
+
+description = 'baas-common'

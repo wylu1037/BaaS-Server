@@ -3,3 +3,8 @@
 *.iml
 logs
 target
+/.vscode/
+/.gradle/
+/*/build/
+/*/out/
+/build/

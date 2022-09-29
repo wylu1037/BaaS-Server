@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':baas-base')
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'io.swagger:swagger-annotations:1.5.14'
+    implementation 'com.baomidou:mybatis-plus-annotation:3.5.0'
+}
+
+description = 'baas-user-api'

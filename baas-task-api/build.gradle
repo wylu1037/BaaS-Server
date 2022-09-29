@@ -1,0 +1,9 @@
+dependencies {
+    implementation project(':baas-base')
+    implementation 'org.projectlombok:lombok'
+    implementation 'io.swagger:swagger-annotations:1.5.14'
+    implementation 'com.baomidou:mybatis-plus-annotation:3.4.3'
+    implementation 'javax.validation:validation-api'
+}
+
+description = 'baas-task-api'

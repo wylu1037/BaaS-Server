@@ -1,0 +1,110 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version "1.0.12.RELEASE"
+    id 'org.springframework.boot' version '2.7.2'
+}
+
+group 'com.zkjg'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding("utf-8")
+    }
+
+    // 使用插件
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    // 指定JDK版本
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    bootJar {
+        enabled = false
+    }
+    jar {
+        enabled = true
+    }
+}
+
+// 定义依赖版本
+ext {
+    hutoolVersion = '5.6.6'
+    mysqlVersion = '8.0.25'
+    lombokVersion = '1.18.20'
+    druidStarterVersion = '1.2.11'
+    mybatisPlusVersion = '3.4.3'
+    mybatisVersion = '2.1.3'
+    lombokVersion = '1.18.20'
+    junitVersion = '5.8.2'
+    nacosVersion = '0.2.12'
+    nacosClientVersion = '2.1.0'
+    dubboVersion = '2.6.12'
+    nettyVersion = '4.1.42.Final'
+    scsVersion = '1.0.11'
+    lang3Version = '3.12.0'
+    quartzVersion = '2.3.2'
+    liquibaseVersion = '4.9.1'
+    gsonVersion = '2.9.0'
+    validationVersion = '2.0.1.Final'
+}
+
+// 子项目的通用配置，不包括root project
+subprojects {
+    task wrapper(type: Wrapper) {
+        description = 'Install Gradle wrapper'
+        gradleVersion = '7.4'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom(SpringBootPlugin.BOM_COORDINATES)
+        }
+
+        // 管理项目的依赖版本，不实际引入依赖
+        dependencies {
+            dependency "com.zkjg:baas-base:1.0-SNAPSHOT"
+            dependency "com.zkjg:baas-common:1.0-SNAPSHOT"
+            dependency "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+            dependency "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+            dependency "cn.hutool:hutool-all:${hutoolVersion}"
+            dependency "mysql:mysql-connector-java:${mysqlVersion}"
+            dependency "lombok:org.projectlombok:${lombokVersion}"
+            dependency "com.alibaba:druid-spring-boot-starter:${druidStarterVersion}"
+            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+            dependency "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}"
+            dependency "org.projectlombok:lombok:${lombokVersion}"
+            dependency "com.alibaba.boot:nacos-discovery-spring-boot-starter:${nacosVersion}"
+            dependency "com.alibaba.nacos:nacos-client:${nacosClientVersion}"
+            dependency "com.alibaba:dubbo:${dubboVersion}"
+            dependency "com.alibaba:dubbo-registry-nacos:${dubboVersion}"
+            dependency "io.netty:netty-all:${nettyVersion}"
+            dependency "org.apache.commons:commons-lang3:${lang3Version}"
+            dependency "org.quartz-scheduler:quartz:${quartzVersion}"
+            dependency "org.quartz-scheduler:quartz-jobs:${quartzVersion}"
+            dependency "org.liquibase:liquibase-core:${liquibaseVersion}"
+            dependency "com.google.code.gson:gson:${gsonVersion}"
+            dependency "javax.validation:validation-api:${validationVersion}"
+        }
+    }
+
+    // 引入不同项目公共依赖
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        implementation 'org.springframework.boot:spring-boot-starter'
+    }
+}
